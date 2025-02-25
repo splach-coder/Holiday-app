@@ -7,7 +7,7 @@ const authMiddleware = (req, res, next) => {
   }
 
   // Hardcode admin user emails or usernames (you can customize this list)
-  const adminUsers = ['anas.benabbou@dkm-customs.com'];
+  const adminUsers = ['ana.benabbou@dkm-customs.com'];
   
   if (header) {
     try {

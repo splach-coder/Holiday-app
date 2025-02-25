@@ -1,0 +1,28 @@
+<!-- views/partials/greeting.ejs -->
+<div class="greeting-container">
+  <h1 id="greeting-message"><%= initialGreeting %>, <%= name || 'Guest' %>!</h1>
+</div>
+
+<script>
+  // Function to update the greeting based on time of day
+  function updateGreeting() {
+    const greetingElement = document.getElementById('greeting-message');
+    const currentHour = new Date().getHours();
+    const name = '<%= name || "Guest" %>';
+    let greeting;
+    
+    if (currentHour >= 5 && currentHour < 12) {
+      greeting = 'Good Morning';
+    } else if (currentHour >= 12 && currentHour < 18) {
+      greeting = 'Good Afternoon';
+    } else {
+      greeting = 'Good Evening';
+    }
+    
+    greetingElement.textContent = `${greeting}, ${name}!`;
+  }
+  
+  // Update greeting every minute
+  updateGreeting();
+  setInterval(updateGreeting, 60000); // Update every minute
+</script>

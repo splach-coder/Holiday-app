@@ -1,0 +1,54 @@
+<!-- views/dashboard.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DKM Dashboard</title>
+  <link rel='stylesheet' href='/stylesheets/DKMdashboard.css' />
+  <link rel='stylesheet' href='/stylesheets/header.css' />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <%- include('../partials/header') %>
+
+    <div class="Greeting">
+      <%- include('../partials/greeting', {
+        name: 'Anas Benabbou',
+        initialGreeting: initialGreeting
+      }) %>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Holiday Left Card -->
+      <div class="holiday-card">
+        <div class="holiday-label">HOLIDAY LEFT</div>
+        <div class="holiday-count"><%= user.Remaining_Days %></div>
+      </div>
+
+      <!-- Leave History Section -->
+      <div class="history-section">
+        <h2 class="history-title">LEAVE HISTORY</h2>
+        
+        <!-- Leave History Items -->
+        <div class="history-items">
+          <% const historyItems = [
+            { date: 'HOLIDAY FROM 15/02/2025 TILL 17/02/2025', days: 3 },
+            { date: 'HOLIDAY FROM 15/02/2025 TILL 17/02/2025', days: 3 }
+          ]; %>
+          
+          <% historyItems.forEach((item, index) => { %>
+            <div class="history-item">
+              <span class="history-date"><%= item.date %></span>
+              <span class="history-days"><%= item.days %></span>
+            </div>
+          <% }); %>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
